@@ -14,6 +14,13 @@
         <com.zmj.selfdefinitionview.practice.TextOnPath
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"/>
+        <com.zmj.selfdefinitionview.practice.DeleteLineText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+        <com.zmj.selfdefinitionview.practice.LocalText
+                android:layout_width="match_parent"
+                android:layout_height="120dp"/>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
