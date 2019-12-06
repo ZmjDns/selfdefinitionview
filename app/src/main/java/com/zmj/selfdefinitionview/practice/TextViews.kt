@@ -141,9 +141,27 @@ class LocalText: View{
         canvas?.drawText("雨骨底条今直沿微写",20f,60f,paint)
 
         paint.textLocale = Locale.TAIWAN
-        canvas?.drawText("雨骨底条今直沿微写",20f,120f,paint)
+        canvas?.drawText("雨骨底条今直沿微写",20f,60f + paint.fontSpacing,paint)
 
         paint.textLocale = Locale.JAPAN
-        canvas?.drawText("雨骨底条今直沿微写",20f,180f,paint)
+        canvas?.drawText("雨骨底条今直沿微写",20f,60f + paint.fontSpacing * 2,paint)
+    }
+}
+
+class TextBounds: View{
+    constructor(context:Context):super(context)
+    constructor(context: Context, @Nullable attrs: AttributeSet):super(context, attrs)
+    constructor(context: Context,@Nullable attrs: AttributeSet,@Nullable selfDef:Int):super(context, attrs,selfDef)
+
+    val paint: Paint by lazy { Paint(Paint.ANTI_ALIAS_FLAG) }
+
+    override fun onDraw(canvas: Canvas?) {
+        super.onDraw(canvas)
+
+        paint.color = Color.YELLOW
+        paint.textSize = 40f
+
+        canvas?.drawText("Text Bounds",20f,60f,paint)
+
     }
 }
