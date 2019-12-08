@@ -21,6 +21,9 @@
         <com.zmj.selfdefinitionview.practice.LocalText
                 android:layout_width="match_parent"
                 android:layout_height="120dp"/>
+        <com.zmj.selfdefinitionview.practice.TextBounds
+                android:layout_width="match_parent"
+                android:layout_height="300dp"/>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

@@ -7,6 +7,7 @@ import android.text.StaticLayout
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.graphics.toRectF
 import org.jetbrains.annotations.Nullable
 import java.util.*
 
@@ -154,14 +155,34 @@ class TextBounds: View{
     constructor(context: Context,@Nullable attrs: AttributeSet,@Nullable selfDef:Int):super(context, attrs,selfDef)
 
     val paint: Paint by lazy { Paint(Paint.ANTI_ALIAS_FLAG) }
+    val text = "Text Bounds"
+    val bounds = Rect()
+
+    val textPaint = TextPaint(paint)
+    val string = "StaticLayout:\n并不是一个 View 或者 ViewGroup ，而是 android.text.Layout 的子类\n，它是纯粹用来绘制文字的.支持换行"
+    val staticLayout = StaticLayout(string, textPaint,600,Layout.Alignment.ALIGN_NORMAL,1f,0f,true)
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        paint.color = Color.YELLOW
+        paint.color = Color.BLACK
         paint.textSize = 40f
 
-        canvas?.drawText("Text Bounds",20f,60f,paint)
+        canvas?.drawText(text,20f,60f,paint)
+
+        paint.getTextBounds(text,0,text.length,bounds)
+        bounds.left += 20
+        bounds.top += 60
+        bounds.right += 20
+        bounds.bottom += 60
+        paint.style = Paint.Style.STROKE
+        canvas?.drawRect(bounds,paint)
+
+        canvas?.save()
+        //textPaint.textSize = 40f
+        canvas?.translate(50f,100f)
+        staticLayout.draw(canvas)
+        canvas?.restore()
 
     }
 }
