@@ -184,5 +184,8 @@ class TextBounds: View{
         staticLayout.draw(canvas)
         canvas?.restore()
 
+
+
+
     }
 }
