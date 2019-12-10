@@ -71,3 +71,24 @@ class CanvasClipPath: View{
         canvas?.restore()
     }
 }
+
+class CanvasRotate:View{
+    constructor(context:Context):super(context)
+    constructor(context: Context,attr:AttributeSet?):super(context,attr)
+    constructor(context: Context,attr: AttributeSet?,defStyle:Int):super(context,attr,defStyle)
+
+    val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    val bitmap = BitmapFactory.decodeResource(resources,R.drawable.map_icon)
+
+    override fun onDraw(canvas: Canvas?) {
+        super.onDraw(canvas)
+
+        canvas?.rotate(45f,100f,100f)
+        canvas?.drawBitmap(bitmap,0f,0f,paint)
+
+        canvas?.save()
+        canvas?.scale(0.6f,0.6f,bitmap.width/2f,bitmap.height/2f)
+        canvas?.drawBitmap(bitmap,400f,-300f,paint)
+        canvas?.restore()
+    }
+}
