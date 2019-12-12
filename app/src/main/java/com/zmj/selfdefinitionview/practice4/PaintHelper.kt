@@ -1,10 +1,7 @@
 package com.zmj.selfdefinitionview.practice4
 
 import android.content.Context
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Path
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import com.zmj.selfdefinitionview.R
@@ -90,5 +87,26 @@ class CanvasRotate:View{
         canvas?.scale(0.6f,0.6f,bitmap.width/2f,bitmap.height/2f)
         canvas?.drawBitmap(bitmap,400f,-300f,paint)
         canvas?.restore()
+
+        canvas?.save()
+        //错切
+        canvas?.skew(0f,0.5f)
+        canvas?.drawBitmap(bitmap,200f,-800f,paint)
+        canvas?.restore()
     }
+}
+
+class CanvasMatrix: View{
+    constructor(context:Context):super(context)
+    constructor(context: Context,attr:AttributeSet?):super(context,attr)
+    constructor(context: Context,attr: AttributeSet?,defStyle:Int):super(context,attr,defStyle)
+
+    val myMatrix = Matrix()
+
+    override fun onDraw(canvas: Canvas?) {
+        super.onDraw(canvas)
+
+        matrix
+    }
+
 }

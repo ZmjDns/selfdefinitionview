@@ -6,19 +6,34 @@
         android:layout_height="wrap_content">
 
     <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <com.zmj.selfdefinitionview.practice4.PaintClipView
-                android:layout_width="80dp"
-                android:layout_height="80dp"/>
-        <com.zmj.selfdefinitionview.practice4.CanvasClipPath
-                android:layout_width="140dp"
-                android:layout_height="80dp"/>
-        <com.zmj.selfdefinitionview.practice4.CanvasRotate
+
+        <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"/>
+                android:layout_height="wrap_content">
+            <com.zmj.selfdefinitionview.practice4.PaintClipView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+            <com.zmj.selfdefinitionview.practice4.CanvasClipPath
+                    android:layout_width="140dp"
+                    android:layout_height="80dp"/>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <com.zmj.selfdefinitionview.practice4.CanvasRotate
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"/>
+        </LinearLayout>
 
     </LinearLayout>
+
+
 
 </androidx.core.widget.NestedScrollView>
