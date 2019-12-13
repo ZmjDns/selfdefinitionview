@@ -21,6 +21,9 @@
                     android:layout_width="140dp"
                     android:layout_height="80dp"/>
 
+            <com.zmj.selfdefinitionview.practice4.CanvasMatrix
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_80"/>
 
 
         </LinearLayout>

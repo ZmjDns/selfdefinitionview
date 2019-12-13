@@ -101,12 +101,22 @@ class CanvasMatrix: View{
     constructor(context: Context,attr:AttributeSet?):super(context,attr)
     constructor(context: Context,attr: AttributeSet?,defStyle:Int):super(context,attr,defStyle)
 
+    val paint = Paint()
     val myMatrix = Matrix()
+    val bitmap = BitmapFactory.decodeResource(resources,R.drawable.map_icon)
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        matrix
+        myMatrix.reset()
+        myMatrix.postTranslate(10f,10f)//平移
+        myMatrix.postRotate(45f,100f,100f)//旋转
+
+
+        canvas?.save()
+        canvas?.concat(myMatrix)
+        canvas?.drawBitmap(bitmap,0f,0f,paint)
+        canvas?.restore()
     }
 
 }
