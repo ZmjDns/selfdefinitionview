@@ -111,6 +111,7 @@ class CanvasMatrix: View{
         myMatrix.reset()
         myMatrix.postTranslate(10f,10f)//平移
         myMatrix.postRotate(45f,100f,100f)//旋转
+        myMatrix.postScale(0.6f,0.6f,bitmap.width/2f,bitmap.height/2f)//缩放
 
 
         canvas?.save()
