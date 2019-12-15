@@ -28,11 +28,17 @@
 
         </LinearLayout>
         <LinearLayout
+
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <com.zmj.selfdefinitionview.practice4.CanvasRotate
                     android:layout_width="match_parent"
                     android:layout_height="120dp"/>
+
+            <com.zmj.selfdefinitionview.practice4.MatrixPolyToPoly
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_100"/>
         </LinearLayout>
 
     </LinearLayout>

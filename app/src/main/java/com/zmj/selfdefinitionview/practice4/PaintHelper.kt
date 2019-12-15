@@ -121,3 +121,35 @@ class CanvasMatrix: View{
     }
 
 }
+
+class MatrixPolyToPoly: View{
+    constructor(context:Context):super(context)
+    constructor(context: Context,attr:AttributeSet?):super(context,attr)
+    constructor(context: Context,attr: AttributeSet?,defStyle:Int):super(context,attr,defStyle)
+
+    var leftP:Float = left.toFloat()
+    var topP = top.toFloat()
+    var rightP = right.toFloat()
+    var bottomP = bottom.toFloat()
+
+    var pointSrc = floatArrayOf(leftP,topP,rightP,topP,leftP,bottomP,rightP,bottomP)
+    var pointDst = floatArrayOf(leftP - 10, topP + 50, rightP + 120, topP - 90, leftP + 20, bottomP + 30, rightP + 20, bottomP + 60)
+
+    val paint = Paint()
+    val bitmap = BitmapFactory.decodeResource(resources,R.drawable.map_icon)
+
+    val myMatrix = Matrix()
+
+    override fun onDraw(canvas: Canvas?) {
+        super.onDraw(canvas)
+
+        myMatrix.reset()
+        myMatrix.setPolyToPoly(pointSrc,0,pointDst,0,2)
+
+        canvas?.save()
+        canvas?.concat(matrix)
+        canvas?.drawBitmap(bitmap,0f,0f,paint)
+        canvas?.restore()
+    }
+
+}
