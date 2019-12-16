@@ -171,8 +171,9 @@ class CameraChange: View{
 
         canvas?.save()
 
-        camera.rotateX(60f)
-        camera.applyToCanvas(canvas)
+        camera.rotateX(60f)//旋转camera的三维空间
+        camera.applyToCanvas(canvas)//把旋转投影 到Canvas
+        camera.restore()//恢复Camera的状态
 
         canvas?.drawBitmap(bitmap,0f,0f,paint)
         canvas?.restore()
