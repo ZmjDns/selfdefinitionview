@@ -2,6 +2,7 @@ package com.zmj.selfdefinitionview.practice4
 
 import android.content.Context
 import android.graphics.*
+import android.hardware.Camera
 import android.util.AttributeSet
 import android.view.View
 import com.zmj.selfdefinitionview.R
@@ -63,7 +64,7 @@ class CanvasClipPath: View{
         canvas?.drawPath(path2,paint)
 
         canvas?.save()
-        canvas?.clipPath(path2)
+        canvas?.clipPath(path2,Region.Op.DIFFERENCE)
         canvas?.drawBitmap(bitmap,200f,0f,paint)
         canvas?.restore()
     }
@@ -90,8 +91,8 @@ class CanvasRotate:View{
 
         canvas?.save()
         //错切
-        canvas?.skew(0f,0.5f)
-        canvas?.drawBitmap(bitmap,200f,-800f,paint)
+        canvas?.skew(0f,0.3f)
+        canvas?.drawBitmap(bitmap,600f,-800f,paint)
         canvas?.restore()
     }
 }
@@ -122,15 +123,16 @@ class CanvasMatrix: View{
 
 }
 
+//点对点映射的方式设置变换
 class MatrixPolyToPoly: View{
     constructor(context:Context):super(context)
     constructor(context: Context,attr:AttributeSet?):super(context,attr)
     constructor(context: Context,attr: AttributeSet?,defStyle:Int):super(context,attr,defStyle)
 
-    var leftP:Float = left.toFloat()
-    var topP = top.toFloat()
-    var rightP = right.toFloat()
-    var bottomP = bottom.toFloat()
+    var leftP = 100f//:Float = left.toFloat()
+    var topP = 100f //top.toFloat()
+    var rightP = 200f//right.toFloat()
+    var bottomP = 200f//bottom.toFloat()
 
     var pointSrc = floatArrayOf(leftP,topP,rightP,topP,leftP,bottomP,rightP,bottomP)
     var pointDst = floatArrayOf(leftP - 10, topP + 50, rightP + 120, topP - 90, leftP + 20, bottomP + 30, rightP + 20, bottomP + 60)
@@ -144,12 +146,37 @@ class MatrixPolyToPoly: View{
         super.onDraw(canvas)
 
         myMatrix.reset()
-        myMatrix.setPolyToPoly(pointSrc,0,pointDst,0,2)
+        myMatrix.setPolyToPoly(pointSrc,0,pointDst,0,4)
 
         canvas?.save()
-        canvas?.concat(matrix)
+        canvas?.concat(myMatrix)
         canvas?.drawBitmap(bitmap,0f,0f,paint)
         canvas?.restore()
+    }
+}
+
+//CAmera进行三维变换
+class CameraChange: View{
+    constructor(context:Context):super(context)
+    constructor(context: Context,attr:AttributeSet?):super(context,attr)
+    constructor(context: Context,attr: AttributeSet?,defStyle:Int):super(context,attr,defStyle)
+
+    val paint = Paint()
+    val bitmap = BitmapFactory.decodeResource(resources,R.drawable.map_icon)
+
+    val camera = Camera()
+
+    override fun onDraw(canvas: Canvas?) {
+        super.onDraw(canvas)
+
+        canvas?.save()
+
+        camera.rotateX(60f)
+        camera.applyToCanvas(canvas)
+
+        canvas?.drawBitmap(bitmap,0f,0f,paint)
+        canvas?.restore()
+
     }
 
 }
