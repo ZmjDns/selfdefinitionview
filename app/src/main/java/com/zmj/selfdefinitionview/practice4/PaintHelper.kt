@@ -59,7 +59,7 @@ class CanvasClipPath: View{
         canvas?.drawBitmap(bitmap,10f,10f,paint)
         canvas?.restore()
 
-        path2.addCircle(300f,100f,40f,Path.Direction.CW)
+        path2.addCircle(300f,100f,80f,Path.Direction.CW)
 
         canvas?.drawPath(path2,paint)
 
@@ -171,12 +171,28 @@ class CameraChange: View{
 
         canvas?.save()
 
+        camera.save()//保存camera状态
         camera.rotateX(60f)//旋转camera的三维空间
         camera.applyToCanvas(canvas)//把旋转投影 到Canvas
         camera.restore()//恢复Camera的状态
 
         canvas?.drawBitmap(bitmap,0f,0f,paint)
         canvas?.restore()
+
+        canvas?.save()
+
+        camera.save()
+        camera.rotateX(60f)
+
+        canvas?.translate(150f,50f) //旋转之后把投影移动过来（中心坐标）
+        camera.applyToCanvas(canvas)//把旋转投影到canvas
+        canvas?.translate(100f,0f)//旋转之前把绘制内容移动到轴心（原点）
+        camera.restore()
+
+        canvas?.drawBitmap(bitmap,100f,0f,paint)
+        canvas?.restore()
+
+
 
     }
 

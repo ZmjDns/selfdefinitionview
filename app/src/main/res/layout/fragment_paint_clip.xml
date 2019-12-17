@@ -44,7 +44,7 @@
                     android:layout_width="@dimen/dp_100"
                     android:layout_height="@dimen/dp_100"/>
             <com.zmj.selfdefinitionview.practice4.CameraChange
-                    android:layout_width="@dimen/dp_150"
+                    android:layout_width="@dimen/dp_300"
                     android:layout_height="@dimen/dp_100"/>
         </LinearLayout>
 
