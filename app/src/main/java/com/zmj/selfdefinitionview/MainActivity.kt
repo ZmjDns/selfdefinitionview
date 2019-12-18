@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.zmj.selfdefinitionview.ui.adapter.PagerAdapter
 import com.zmj.selfdefinitionview.ui.fragment.PaintClipFragment
 import com.zmj.selfdefinitionview.ui.fragment.PaintTextFragment
+import com.zmj.selfdefinitionview.ui.fragment.ViewGroupFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -20,9 +21,11 @@ class MainActivity : AppCompatActivity() {
 
         fragmentList.add(PaintTextFragment())
         fragmentList.add(PaintClipFragment())
+        fragmentList.add(ViewGroupFragment())
 
         titleList.add("PaintText")
         titleList.add("PaintClip")
+        titleList.add("viewGroup")
 
 
         pagerAdapter = PagerAdapter(supportFragmentManager,0,this,fragmentList,titleList)
