@@ -1,5 +1,6 @@
 package com.zmj.selfdefinitionview.ui.fragment
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,7 +41,19 @@ class AnimationFragment: Fragment() {
 
     private fun initAnmationTools() {
         btn_transX.setOnClickListener {
-            batman_1.animate().translationX(300f)
+            /*batman_1.animate()
+                .translationX(300f)
+//            batman_1.animate()
+//                .translationY(300f)
+//                .translationX(-300f)
+//                .translationY(-300f)*/
+
+
+
+            val objectAnimator = ObjectAnimator.ofFloat(sports,"progress",100f)
+
+            objectAnimator.setDuration(2000).start()
+
         }
     }
 
