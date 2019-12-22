@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.zmj.selfdefinitionview.ui.adapter.PagerAdapter
+import com.zmj.selfdefinitionview.ui.fragment.AnimationFragment
 import com.zmj.selfdefinitionview.ui.fragment.PaintClipFragment
 import com.zmj.selfdefinitionview.ui.fragment.PaintTextFragment
 import com.zmj.selfdefinitionview.ui.fragment.ViewGroupFragment
@@ -22,10 +23,13 @@ class MainActivity : AppCompatActivity() {
         fragmentList.add(PaintTextFragment())
         fragmentList.add(PaintClipFragment())
         fragmentList.add(ViewGroupFragment())
+        fragmentList.add(AnimationFragment())
 
         titleList.add("PaintText")
         titleList.add("PaintClip")
         titleList.add("viewGroup")
+        titleList.add("Animation")
+
 
 
         pagerAdapter = PagerAdapter(supportFragmentManager,0,this,fragmentList,titleList)
