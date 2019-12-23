@@ -49,7 +49,7 @@ class SportsView: View {
         canvas?.save()
         canvas?.drawArc(arc,360f,progress * 3.6f,false,paint)
 
-        canvas?.drawText("$progress%",100f,180f,textPaint)
+        canvas?.drawText("${progress.toInt()}%",100f,180f,textPaint)
         canvas?.restore()
     }
 }
