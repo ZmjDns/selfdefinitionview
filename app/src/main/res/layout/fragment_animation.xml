@@ -6,13 +6,14 @@
         android:layout_height="match_parent">
 
     <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_300">
+                android:layout_height="@dimen/dp_70">
             <Button
                     android:id="@+id/btn_transX"
                     android:layout_width="wrap_content"
@@ -23,11 +24,36 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/batman"/>
+        </LinearLayout>
 
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <Button
+                    android:id="@+id/btn_circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="画园"/>
             <com.zmj.selfdefinitionview.practice6.SportsView
                     android:id="@+id/sports"
-                    android:layout_width="@dimen/dp_200"
-                    android:layout_height="@dimen/dp_200"/>
+                    android:layout_width="@dimen/dp_150"
+                    android:layout_height="@dimen/dp_150"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <Button
+                    android:id="@+id/btn_interpolator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="线性速度器"/>
+            <Button
+                    android:id="@+id/btn_qianYaoHuiTan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="前摇回弹"/>
+
         </LinearLayout>
     </LinearLayout>
 

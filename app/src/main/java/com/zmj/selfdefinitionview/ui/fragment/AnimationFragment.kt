@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnticipateOvershootInterpolator
+import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import com.zmj.selfdefinitionview.R
 import kotlinx.android.synthetic.main.fragment_animation.*
@@ -41,20 +43,35 @@ class AnimationFragment: Fragment() {
 
     private fun initAnmationTools() {
         btn_transX.setOnClickListener {
-            /*batman_1.animate()
+            batman_1.animate()
                 .translationX(300f)
 //            batman_1.animate()
 //                .translationY(300f)
 //                .translationX(-300f)
-//                .translationY(-300f)*/
-
-
-
-            val objectAnimator = ObjectAnimator.ofFloat(sports,"progress",100f)
-
-            objectAnimator.setDuration(2000).start()
+//                .translationY(-300f)
 
         }
+
+        btn_circle.setOnClickListener {
+            val objectAnimator = ObjectAnimator.ofFloat(sports,"progress",100f)
+            objectAnimator.setDuration(2000).start()
+        }
+
+        btn_interpolator.setOnClickListener {
+            batman_1.animate()
+                .translationX(500f)
+                .setInterpolator(LinearInterpolator())//线性速度器  即匀速
+        }
+
+        btn_qianYaoHuiTan.setOnClickListener {
+            val animate = ObjectAnimator.ofFloat(batman_1,"translationX",500f)
+            animate.interpolator = AnticipateOvershootInterpolator()  //前摇后弹
+            animate.start()
+        }
+
+
+
+
     }
 
 
