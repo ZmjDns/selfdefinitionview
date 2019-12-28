@@ -8,5 +8,4 @@ package com.zmj.selfdefinitionview.practice6
  * Description :自定义动画完成度 / 时间完成度曲线
  */
 class PathInterpolator {
-
 }
