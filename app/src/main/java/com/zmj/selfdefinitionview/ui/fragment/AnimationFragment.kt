@@ -1,14 +1,19 @@
 package com.zmj.selfdefinitionview.ui.fragment
 
+import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnticipateOvershootInterpolator
 import android.view.animation.LinearInterpolator
+import android.view.animation.PathInterpolator
+import androidx.core.animation.addListener
 import androidx.fragment.app.Fragment
 import com.zmj.selfdefinitionview.R
+import com.zmj.selfdefinitionview.practice6.MyPath
 import kotlinx.android.synthetic.main.fragment_animation.*
 
 /**
@@ -19,6 +24,7 @@ import kotlinx.android.synthetic.main.fragment_animation.*
  * Description :
  */
 class AnimationFragment: Fragment() {
+    private val TAG = this.javaClass.name
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +72,31 @@ class AnimationFragment: Fragment() {
         btn_qianYaoHuiTan.setOnClickListener {
             val animate = ObjectAnimator.ofFloat(batman_1,"translationX",500f)
             animate.interpolator = AnticipateOvershootInterpolator()  //前摇后弹
+
+            animate.addListener(object :Animator.AnimatorListener{
+                override fun onAnimationRepeat(p0: Animator?) {
+                    Log.i(TAG,"Animator Repeat...")
+                }
+
+                override fun onAnimationEnd(p0: Animator?) {
+                    Log.i(TAG,"Animator End...")
+                }
+
+                override fun onAnimationCancel(p0: Animator?) {
+                    Log.i(TAG,"Animator Cancel...")
+                }
+
+                override fun onAnimationStart(p0: Animator?) {
+                    Log.i(TAG,"Animator Start...")
+                }
+
+            })
+
             animate.start()
+        }
+
+        btn_selfDef.setOnClickListener {
+            val pathInterpolator = PathInterpolator(MyPath().animatePath1())
         }
 
     }
