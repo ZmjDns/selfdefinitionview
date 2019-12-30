@@ -1,9 +1,12 @@
 package com.zmj.selfdefinitionview.ui.fragment
 
 import android.animation.Animator
+import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.util.Property
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +17,8 @@ import androidx.core.animation.addListener
 import androidx.fragment.app.Fragment
 import com.zmj.selfdefinitionview.R
 import com.zmj.selfdefinitionview.practice6.MyPath
+import com.zmj.selfdefinitionview.practice7.HsvEvaluator
+import com.zmj.selfdefinitionview.ui.widget.CircleView
 import kotlinx.android.synthetic.main.fragment_animation.*
 
 /**
@@ -51,6 +56,23 @@ class AnimationFragment: Fragment() {
         btn_transX.setOnClickListener {
             batman_1.animate()
                 .translationX(300f)
+                .setListener(object :Animator.AnimatorListener{
+                    override fun onAnimationRepeat(p0: Animator?) {
+                        Log.i(TAG,"Animator Repeat...")
+                    }
+
+                    override fun onAnimationEnd(p0: Animator?) {
+                        Log.i(TAG,"Animator End...")
+                    }
+
+                    override fun onAnimationCancel(p0: Animator?) {
+                        Log.i(TAG,"Animator Cancel...")
+                    }
+
+                    override fun onAnimationStart(p0: Animator?) {
+                        Log.i(TAG,"Animator Start...")
+                    }
+                })
 //            batman_1.animate()
 //                .translationY(300f)
 //                .translationX(-300f)
@@ -95,10 +117,16 @@ class AnimationFragment: Fragment() {
             animate.start()
         }
 
-        btn_selfDef.setOnClickListener {
-            val pathInterpolator = PathInterpolator(MyPath().animatePath1())
+        btn_changeColor.setOnClickListener {
+//            val animator = ObjectAnimator.ofInt(red_circle,"color",Color.RED,Color.GREEN,Color.RED)
+//            animator.setEvaluator(ArgbEvaluator())
+            //val animator = ObjectAnimator.ofArgb(red_circle,"color",Color.RED,Color.GREEN)
+            //自定义的evaluator
+            val animator = ObjectAnimator.ofInt(red_circle,"color",Color.GREEN)
+            animator.setEvaluator(HsvEvaluator())
+            animator.duration = 4000
+            animator.start()
         }
-
     }
 
 
