@@ -1,9 +1,7 @@
 package com.zmj.selfdefinitionview.ui.widget
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 
@@ -17,6 +15,17 @@ import android.view.View
 class CircleView : View{
 
     private var color:Int = Color.RED
+
+    private var position = PointF(80f,80f)
+
+    fun getPosition():PointF{
+        return position
+    }
+
+    fun setPosition(p:PointF){
+        this.position = p
+        invalidate()
+    }
 
     fun getColor():Int{
         return color
@@ -41,7 +50,7 @@ class CircleView : View{
         paint.color = color
 
         canvas?.save()
-        canvas?.drawCircle(150f,150f,140f,paint)
+        canvas?.drawCircle(position.x,position.y,80f,paint)
         canvas?.restore()
     }
 }
