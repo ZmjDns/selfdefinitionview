@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.graphics.Color
+import android.graphics.PointF
 import android.os.Bundle
 import android.util.Log
 import android.util.Property
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment
 import com.zmj.selfdefinitionview.R
 import com.zmj.selfdefinitionview.practice6.MyPath
 import com.zmj.selfdefinitionview.practice7.HsvEvaluator
+import com.zmj.selfdefinitionview.practice7.PointFEvaluator
 import com.zmj.selfdefinitionview.ui.widget.CircleView
 import kotlinx.android.synthetic.main.fragment_animation.*
 
@@ -127,6 +129,15 @@ class AnimationFragment: Fragment() {
             animator.duration = 4000
             animator.start()
         }
+
+        btn_move.setOnClickListener {
+            //val animator = ObjectAnimator.ofObject(move_circle,"position",PointFEvaluator(),PointF(0f,0f),PointF(200f,200f))
+            val animator = ObjectAnimator.ofObject(move_circle,"position",android.animation.PointFEvaluator(),PointF(0f,0f),PointF(200f,200f))
+
+            animator.duration = 2000
+            animator.start()
+        }
+
     }
 
 
