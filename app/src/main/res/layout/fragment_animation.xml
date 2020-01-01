@@ -38,6 +38,11 @@
                     android:id="@+id/sports"
                     android:layout_width="@dimen/dp_150"
                     android:layout_height="@dimen/dp_150"/>
+
+            <com.zmj.selfdefinitionview.ui.widget.CircleView
+                    android:id="@+id/red_circle"
+                    android:layout_width="@dimen/dp_100"
+                    android:layout_height="@dimen/dp_100"/>
         </LinearLayout>
 
         <LinearLayout
@@ -53,8 +58,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="前摇回弹"/>
+            <Button
+                    android:id="@+id/btn_changeColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="改变圆形色彩"/>
+            <Button
+                    android:id="@+id/btn_move"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="移动圆"/>
 
         </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_400">
+
+            <com.zmj.selfdefinitionview.ui.widget.CircleView
+                    android:id="@+id/move_circle"
+                    android:layout_width="@dimen/dp_100"
+                    android:layout_height="@dimen/dp_100"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
