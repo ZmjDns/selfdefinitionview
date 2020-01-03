@@ -1,26 +1,19 @@
 package com.zmj.selfdefinitionview.ui.fragment
 
 import android.animation.Animator
-import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.graphics.PointF
 import android.os.Bundle
 import android.util.Log
-import android.util.Property
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnticipateOvershootInterpolator
 import android.view.animation.LinearInterpolator
-import android.view.animation.PathInterpolator
-import androidx.core.animation.addListener
 import androidx.fragment.app.Fragment
 import com.zmj.selfdefinitionview.R
-import com.zmj.selfdefinitionview.practice6.MyPath
 import com.zmj.selfdefinitionview.practice7.HsvEvaluator
-import com.zmj.selfdefinitionview.practice7.PointFEvaluator
-import com.zmj.selfdefinitionview.ui.widget.CircleView
 import kotlinx.android.synthetic.main.fragment_animation.*
 
 /**
