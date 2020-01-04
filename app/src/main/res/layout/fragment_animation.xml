@@ -79,6 +79,21 @@
                     android:id="@+id/move_circle"
                     android:layout_width="@dimen/dp_100"
                     android:layout_height="@dimen/dp_100"/>
+            <com.zmj.selfdefinitionview.ui.widget.VideoCover
+                    android:id="@+id/vc_cover"
+                    android:layout_width="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_50"
+                    android:src="@drawable/batman"/>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <Button
+                        android:id="@+id/btn_complexAnim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="复杂连续动画"/>
+            </LinearLayout>
 
         </LinearLayout>
 

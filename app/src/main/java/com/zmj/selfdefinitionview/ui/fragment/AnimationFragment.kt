@@ -131,6 +131,15 @@ class AnimationFragment: Fragment() {
             animator.start()
         }
 
+        btn_complexAnim.setOnClickListener {
+            //vc_cover.animate().setDuration(2000).scaleX(0f).scaleY(0f).alpha(0f)
+            vc_cover.animate()
+                .setDuration(4000)
+                .scaleX(1f)
+                .scaleY(1f)
+                .alpha(1f)
+        }
+
     }
 
 
