@@ -1,7 +1,6 @@
 package com.zmj.selfdefinitionview.ui.fragment
 
-import android.animation.Animator
-import android.animation.ObjectAnimator
+import android.animation.*
 import android.graphics.Color
 import android.graphics.PointF
 import android.os.Bundle
@@ -133,12 +132,73 @@ class AnimationFragment: Fragment() {
 
         btn_complexAnim.setOnClickListener {
             //vc_cover.animate().setDuration(2000).scaleX(0f).scaleY(0f).alpha(0f)
-            vc_cover.animate()
+            /*vc_cover.animate()
                 .setDuration(4000)
                 .scaleX(1f)
                 .scaleY(1f)
-                .alpha(1f)
+                .alpha(1f)*/
+
+            //PropertyAnimator实现多个动画
+            /*iv_origin.animate()
+                .setDuration(2000)
+                .scaleX(0f)
+                .scaleY(0f)
+                .alpha(0f)*/
+
+            //ObjectAnimator实现多个动画
+            /*val holder1 = PropertyValuesHolder.ofFloat("scaleX",0f)
+            val holder2 = PropertyValuesHolder.ofFloat("scaleY",0f)
+            val holder3 = PropertyValuesHolder.ofFloat("alpha",0f)
+
+            val animator = ObjectAnimator.ofPropertyValuesHolder(iv_origin,holder1,holder2,holder3)
+            animator.duration = 2000
+            animator.start()*/
+
+            iv_origin.scaleX = 0f
+            iv_origin.scaleY = 0f
+            iv_origin.alpha = 0f
+
+            iv_origin.animate().setDuration(2000).scaleXBy(1f).scaleYBy(1f).alpha(1f)
         }
+
+        anims_link.setOnClickListener {
+            iv_origin.scaleX = 0f
+            iv_origin.scaleY = 0f
+            iv_origin.alpha = 0f
+
+            val holderX = PropertyValuesHolder.ofFloat("scaleX",1f)
+            val holderY = PropertyValuesHolder.ofFloat("scaleY",1f)
+            val holderA = PropertyValuesHolder.ofFloat("alpha",1f)
+
+            val animatorS = ObjectAnimator.ofPropertyValuesHolder(iv_origin,holderX,holderY,holderA)
+
+            val animator1 = ObjectAnimator.ofFloat(iv_origin,"translationX",100f)
+            animator1.interpolator = LinearInterpolator()
+            val animator2 = ObjectAnimator.ofFloat(iv_origin,"translationX",100f)
+            animator2.interpolator = LinearInterpolator()
+
+            val animatorSet = AnimatorSet()
+            //两个动画依次执行
+            animatorSet.playSequentially(animatorS,animator1,animator2)
+            animatorSet.setDuration(4000).start()
+        }
+
+        //设置关键帧，控制动画完成度
+        btn_progressControl.setOnClickListener {
+            //在0处开始
+            val keyFrame = Keyframe.ofFloat(0f,0f)
+            //时间经过50%的时候，动画完成100%
+            val keyframe2 = Keyframe.ofFloat(0.5f,100f)
+            //时间过100%的时候，动画完成度倒退20%
+            val keyFrame3 = Keyframe.ofFloat(1f,80f)
+
+            val holder = PropertyValuesHolder.ofKeyframe("progress",keyFrame,keyframe2,keyFrame3)
+
+            val animator = ObjectAnimator.ofPropertyValuesHolder(cpb_bar,holder)
+            animator.setDuration(2000).start()
+        }
+
+
 
     }
 
