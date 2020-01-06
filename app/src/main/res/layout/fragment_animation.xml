@@ -73,7 +73,7 @@
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_400">
+                android:layout_height="wrap_content">
 
             <com.zmj.selfdefinitionview.ui.widget.CircleView
                     android:id="@+id/move_circle"
@@ -84,6 +84,11 @@
                     android:layout_width="@dimen/dp_50"
                     android:layout_height="@dimen/dp_50"
                     android:src="@drawable/batman"/>
+            <ImageView
+                    android:id="@+id/iv_origin"
+                    android:layout_width="@dimen/dp_100"
+                    android:layout_height="@dimen/dp_100"
+                    android:src="@drawable/batman"/>
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
@@ -93,7 +98,34 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="复杂连续动画"/>
+                <Button
+                        android:id="@+id/anims_link"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="动画连续执行"/>
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <com.zmj.selfdefinitionview.ui.widget.CirclePresentProgressBar
+                    android:id="@+id/cpb_bar"
+                    android:layout_width="@dimen/dp_100"
+                    android:layout_height="@dimen/dp_100"/>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <Button
+                        android:id="@+id/btn_progressControl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="进度动画"/>
+            </LinearLayout>
+
 
         </LinearLayout>
 
