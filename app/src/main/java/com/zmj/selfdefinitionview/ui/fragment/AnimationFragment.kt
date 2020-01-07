@@ -3,6 +3,8 @@ package com.zmj.selfdefinitionview.ui.fragment
 import android.animation.*
 import android.graphics.Color
 import android.graphics.PointF
+import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -197,6 +199,18 @@ class AnimationFragment: Fragment() {
             val animator = ObjectAnimator.ofPropertyValuesHolder(cpb_bar,holder)
             animator.setDuration(2000).start()
         }
+
+        btn_drawAni.setOnClickListener {
+
+            ai_animationDrawable.apply {
+                setBackgroundResource(R.drawable.animation_drawable)
+                val animationDrawable = background as AnimationDrawable
+
+                animationDrawable.start()
+            }
+        }
+
+
 
 
 
