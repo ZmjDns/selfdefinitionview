@@ -35,12 +35,13 @@ class CanvasOfRotate : View{
 
         canvas.save()
         //canvas的几何变换顺序是反的，所以写代码的顺序要反着来
-        //比如你想先平移，再旋转，你要把平移的操作写在后面，旋转的操作写在前面，如下：
+        //比如你想先平移，再旋转，你要把平移的操作写在后面，旋转的操作写在前面，最后再画图如下：
 
         //旋转
         canvas.rotate(45f,bitmapWith * 3 / 2f,bitmapHeight/2f)
         //平移
         canvas.translate(bitmapWith/1f,0f)
+        //画图
         canvas.drawBitmap(bitmap,0f,0f,paint)
         canvas.restore()
     }
