@@ -3,7 +3,6 @@ package com.zmj.selfdefinitionview.ui.fragment
 import android.animation.*
 import android.graphics.Color
 import android.graphics.PointF
-import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.util.Log
@@ -13,9 +12,11 @@ import android.view.ViewGroup
 import android.view.animation.AnticipateOvershootInterpolator
 import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.zmj.selfdefinitionview.R
 import com.zmj.selfdefinitionview.practice7.HsvEvaluator
 import kotlinx.android.synthetic.main.fragment_animation.*
+
 
 /**
  * Author : Zmj
@@ -208,6 +209,14 @@ class AnimationFragment: Fragment() {
 
                 animationDrawable.start()
             }
+        }
+
+        btn_vectorAni.setOnClickListener {
+
+            //iv_vectorAnimator.setImageResource(R.drawable.animatorvectordrawable)
+
+            //(iv_vectorAnimator.drawable as AnimatedVectorDrawable).start()
+            (iv_vectorAnimator.getDrawable() as AnimatedVectorDrawableCompat).start()
         }
 
 
