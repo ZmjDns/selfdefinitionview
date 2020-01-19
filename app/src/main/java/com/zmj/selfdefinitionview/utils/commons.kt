@@ -17,4 +17,3 @@ fun dpToPx(dp:Float):Float{
 
     return dp * displayMetrics.density
 }
-
