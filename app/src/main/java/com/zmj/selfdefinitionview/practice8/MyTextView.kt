@@ -22,6 +22,9 @@ import com.zmj.selfdefinitionview.R
 class MyTextView: View {
 
 
+
+
+
     /*constructor(context: Context,attrs: AttributeSet):super(context){
         val typeArray: TypedArray = context.obtainStyledAttributes(attrs,R.styleable.MyTextView)
         val text: String? = typeArray.getString(R.styleable.MyTextView_text)
@@ -46,6 +49,7 @@ class MyTextView: View {
     }
 
     private fun init(){
+
         paint.color = Color.BLUE
     }
 
