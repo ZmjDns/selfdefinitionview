@@ -74,10 +74,10 @@ class MyTextView: View {
 
         }*/
         if (widthModel == MeasureSpec.AT_MOST){
-            widthSize = 300
+            widthSize = 400
         }
         if(heightModel == MeasureSpec.AT_MOST){
-            heightSize = 300
+            heightSize = 400
         }
 
         setMeasuredDimension(widthSize,heightSize)
