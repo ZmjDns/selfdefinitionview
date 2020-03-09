@@ -26,6 +26,11 @@ class SupportLinearLayout: LinearLayout {
     val paint = Paint()
     //val bitmap = BitmapFactory.decodeResource(resources, R.drawable.batman)
 
+
+    /**
+     * 每一个view和ViewGroup都会先调用onDraw来绘制自己的主题
+     * 在调用dispatchDraw来绘制字View
+     */
     override fun dispatchDraw(canvas: Canvas?) {
         super.dispatchDraw(canvas)
 
