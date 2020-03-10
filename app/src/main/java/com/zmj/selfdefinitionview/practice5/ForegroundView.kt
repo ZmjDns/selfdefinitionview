@@ -23,6 +23,18 @@ class ForegroundView: ImageView {
 
     val paint = Paint()
 
+    override fun dispatchDraw(canvas: Canvas?) {
+        super.dispatchDraw(canvas)
+        paint.style = Paint.Style.FILL
+        paint.color = Color.RED
+        paint.textSize = 40f
+
+        canvas?.save()
+        canvas?.drawText("HHAHAHHAHAHAHHA",10f,60f,paint)
+        canvas?.restore()
+
+    }
+
     override fun onDrawForeground(canvas: Canvas?) {
         super.onDrawForeground(canvas)
 
