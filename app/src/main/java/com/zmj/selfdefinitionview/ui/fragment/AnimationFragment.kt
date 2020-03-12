@@ -219,7 +219,15 @@ class AnimationFragment: Fragment() {
             (iv_vectorAnimator.getDrawable() as AnimatedVectorDrawableCompat).start()
         }
 
-
+        btn_preRing.setOnClickListener {
+            val objectAnimator = ObjectAnimator.ofFloat(prv,"progress",45f,360f)
+            objectAnimator.duration = 2000
+            //带施法前摇和结束回退的速度器
+            //objectAnimator.interpolator = AnticipateOvershootInterpolator()
+            //pathInterpolator路径速度器
+            objectAnimator.interpolator = MyPathInterpolator().getLinearInterpolator()//.getPathInterpolator()
+            objectAnimator.start()
+        }
 
 
 
