@@ -14,6 +14,7 @@ import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.zmj.selfdefinitionview.R
+import com.zmj.selfdefinitionview.practice6.MyPathInterpolator
 import com.zmj.selfdefinitionview.practice7.HsvEvaluator
 import kotlinx.android.synthetic.main.fragment_animation.*
 
@@ -220,18 +221,74 @@ class AnimationFragment: Fragment() {
         }
 
         btn_preRing.setOnClickListener {
-            val objectAnimator = ObjectAnimator.ofFloat(prv,"progress",45f,360f)
-            objectAnimator.duration = 2000
-            //带施法前摇和结束回退的速度器
-            //objectAnimator.interpolator = AnticipateOvershootInterpolator()
-            //pathInterpolator路径速度器
-            objectAnimator.interpolator = MyPathInterpolator().getLinearInterpolator()//.getPathInterpolator()
-            objectAnimator.start()
+            //ringPrePropertyAnimator()
+            ringPreObjAnimator()
         }
-
-
-
     }
 
+    private fun ringPrePropertyAnimator(){
+        prv.animate()
+            .setDuration(3000)
+            .scaleX(0.5f)
+            .scaleY(0.5f)
+            .setListener(object :Animator.AnimatorListener{
+                override fun onAnimationRepeat(animation: Animator?) {
+                    Log.i("ringPrePropertyAnimator","AnimationRepeat........")
+                }
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    Log.i("ringPrePropertyAnimator","AnimationEnd........")
+                }
+
+                override fun onAnimationCancel(animation: Animator?) {
+                    Log.i("ringPrePropertyAnimator","AnimationCancel........")
+                }
+
+                override fun onAnimationStart(animation: Animator?) {
+                    Log.i("ringPrePropertyAnimator","AnimationStart........")
+                }
+
+            }).start()
+    }
+
+
+    private fun ringPreObjAnimator(){
+        val objectAnimator = ObjectAnimator.ofFloat(prv,"progress",0f,360f)
+        objectAnimator.duration = 2000
+        //带施法前摇和结束回退的速度器
+        //objectAnimator.interpolator = AnticipateOvershootInterpolator()
+        //pathInterpolator路径速度器
+        //objectAnimator.interpolator = MyPathInterpolator().getLinearInterpolator()//.getPathInterpolator()
+
+        //设置动画重复执行的模式  RESTART：重启模式      REVERSE：来回反复模式
+        //objectAnimator.repeatMode = ValueAnimator.RESTART//.REVERSE//.RESTART
+        //objectAnimator.repeatCount = 3
+        objectAnimator.addListener(object :Animator.AnimatorListener{
+            override fun onAnimationRepeat(animation: Animator?) {
+                Log.i("ringPreObjAnimator","AnimationRepeat........")
+            }
+
+            override fun onAnimationEnd(animation: Animator?) {
+                Log.i("ringPreObjAnimator","AnimationEnd........")
+            }
+
+            override fun onAnimationCancel(animation: Animator?) {
+                Log.i("ringPreObjAnimator","AnimationCancel........")
+            }
+
+            override fun onAnimationStart(animation: Animator?) {
+                Log.i("ringPreObjAnimator","AnimationStart........")
+            }
+        })
+
+        objectAnimator.addUpdateListener {
+            val fraction =  it.animatedFraction
+            val progress = it.getAnimatedValue("progress")
+
+            Log.i("ringPreObjAnimator","animatedFraction：$fraction   progress:$progress")
+        }
+
+        objectAnimator.start()
+    }
 
 }
