@@ -7,7 +7,7 @@ import android.animation.TypeEvaluator
  * Blog : https://blog.csdn.net/Zmj_Dns
  * GitHub : https://github.com/ZmjDns
  * Time : 2020/3/14
- * Description :
+ * Description :根据动画化的完成度（fraction）计算对应的动画属性（位置、颜色等等）
  */
 class PointEvaluator: TypeEvaluator<FloatArray> {
 
