@@ -16,6 +16,7 @@ import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.zmj.selfdefinitionview.R
 import com.zmj.selfdefinitionview.practice6.MyPathInterpolator
 import com.zmj.selfdefinitionview.practice7.HsvEvaluator
+import com.zmj.selfdefinitionview.practice7.PointEvaluator
 import kotlinx.android.synthetic.main.fragment_animation.*
 
 
@@ -223,6 +224,15 @@ class AnimationFragment: Fragment() {
         btn_preRing.setOnClickListener {
             //ringPrePropertyAnimator()
             ringPreObjAnimator()
+        }
+
+        btn_movePoint.setOnClickListener {
+
+            val objectAnimator = ObjectAnimator.ofObject(point,"position",PointEvaluator(),floatArrayOf(10f,10f),floatArrayOf(200f,200f))
+
+            objectAnimator.duration = 2000
+            objectAnimator.start()
+
         }
     }
 
