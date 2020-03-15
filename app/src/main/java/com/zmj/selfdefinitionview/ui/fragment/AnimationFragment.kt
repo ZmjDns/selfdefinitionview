@@ -223,19 +223,30 @@ class AnimationFragment: Fragment() {
 
         btn_preRing.setOnClickListener {
             //ringPrePropertyAnimator()
-            ringPreObjAnimator()
+            //ringPreObjAnimator()
+            setKeyframe()
         }
 
         btn_movePoint.setOnClickListener {
 
+            //圆点移动动画
             val objectAnimator = ObjectAnimator.ofObject(point,"position",PointEvaluator(),floatArrayOf(10f,10f),floatArrayOf(200f,200f))
-
-            objectAnimator.duration = 2000
-            objectAnimator.start()
-
+            objectAnimator.duration = 1000
+            //原点水平左移
+            val objectAnimator2 = ObjectAnimator.ofObject(point,"position",PointEvaluator(), floatArrayOf(200f,200f),floatArrayOf(10f,200f))
+            objectAnimator2.duration = 1000
+            //回到原点
+            val objectAnimator3 = ObjectAnimator.ofObject(point,"positon",PointEvaluator(),floatArrayOf(0f,200f),floatArrayOf(0f,0f))
+            objectAnimator3.duration = 1000
+            val animatorSet = AnimatorSet()//.play(objectAnimator).after(objectAnimator2).after(objectAnimator3)
+            //animatorSet.play(objectAnimator).before(objectAnimator2)//.before(objectAnimator3)
+            //objectAnimator.start()
+            animatorSet.playSequentially(objectAnimator,objectAnimator2)
+            animatorSet.start()
         }
     }
 
+    //PropertyAnimator实现动画
     private fun ringPrePropertyAnimator(){
         prv.animate()
             .setDuration(3000)
@@ -262,11 +273,12 @@ class AnimationFragment: Fragment() {
     }
 
 
+    //ObjectAnimator实现动画
     private fun ringPreObjAnimator(){
-        val objectAnimator = ObjectAnimator.ofFloat(prv,"progress",0f,360f)
+        val objectAnimator = ObjectAnimator.ofFloat(prv,"progress",0f,270f)
         objectAnimator.duration = 2000
         //带施法前摇和结束回退的速度器
-        //objectAnimator.interpolator = AnticipateOvershootInterpolator()
+        objectAnimator.interpolator = AnticipateOvershootInterpolator()
         //pathInterpolator路径速度器
         //objectAnimator.interpolator = MyPathInterpolator().getLinearInterpolator()//.getPathInterpolator()
 
@@ -298,6 +310,22 @@ class AnimationFragment: Fragment() {
             Log.i("ringPreObjAnimator","animatedFraction：$fraction   progress:$progress")
         }
 
+        objectAnimator.start()
+    }
+
+    //设置关键帧
+    fun setKeyframe(){
+        //在0%处开始
+        val keyframe1 = Keyframe.ofFloat(0f,0f)
+        //时间经过50%的时候，动画经过100%
+        val keyframe2 = Keyframe.ofFloat(0.5f,360f)//此处的values其实圆要转过的角度，应该在自定义view中进行转化的
+        //时间经过100%的时候在回弹20%
+        val keyframe3 = Keyframe.ofFloat(1f,280f)
+
+        val propertyValuesHolder =  PropertyValuesHolder.ofKeyframe("progress",keyframe1,keyframe2,keyframe3)
+
+        val objectAnimator = ObjectAnimator.ofPropertyValuesHolder(prv,propertyValuesHolder)
+        objectAnimator.duration = 2000
         objectAnimator.start()
     }
 
