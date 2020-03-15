@@ -37,8 +37,11 @@ class PreRingView: View {
         paint.style = Paint.Style.STROKE
         paint.strokeWidth = 8f
         paint.color = Color.RED
+        paint.strokeCap = Paint.Cap.ROUND
 
-        canvas?.drawArc(rectF,45f,progress,false,paint)
+        canvas?.drawArc(rectF,0f,progress,false,paint)
+        //canvas?.drawArc(rectF,0f,progress *3.6,false,paint)//可以将传来的完成百分比转换成对应的圆的度数
+
         paint.style = Paint.Style.FILL
         paint.strokeWidth = 1f
         paint.textSize = 40f
