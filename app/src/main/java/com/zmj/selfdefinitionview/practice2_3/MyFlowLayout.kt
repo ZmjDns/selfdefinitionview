@@ -1,14 +1,13 @@
 package com.zmj.selfdefinitionview.practice2_3
 
 import android.content.Context
-import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.marginBottom
-import androidx.core.view.marginEnd
-import androidx.core.view.marginStart
-import androidx.core.view.marginTop
+import android.view.WindowManager
+import android.widget.LinearLayout
+import android.widget.TextView
+import com.zmj.selfdefinitionview.R
 
 /**
  * Author : Zmj
@@ -30,6 +29,43 @@ class MyFlowLayout : ViewGroup {
     override fun generateLayoutParams(attrs: AttributeSet?): LayoutParams {
         return MarginLayoutParams(context,attrs)
     }
+
+    /**
+     * 添加多个Tag
+     */
+    fun setTags(tags: List<String>){
+        for (tag in tags){
+            setTag(tag)
+        }
+    }
+
+    /**
+     * 添加单个tag标签
+     */
+    fun setTag(tagStr: String){
+        val tv = TextView(context)
+        val tvLP = MarginLayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT)
+        tvLP.setMargins(30,30,0,0)
+        tv.layoutParams = tvLP
+        tv.setPadding(30,12,30,12)
+        tv.background = resources.getDrawable(R.drawable.shape_oval,null)
+        tv.text = tagStr
+
+        tv.setOnClickListener { tagClickListener?.onTagClick(it) }
+
+        addView(tv)
+        //requestLayout()
+    }
+
+    interface TagClick{
+        fun onTagClick(tagView: View)
+    }
+    private var tagClickListener: TagClick? = null
+    //设置点击监听
+    fun setTagClickListener(tagClickListener: TagClick){
+        this.tagClickListener = tagClickListener
+    }
+
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         allViewLists.clear()
@@ -200,7 +236,8 @@ class MyFlowLayout : ViewGroup {
 
         //如果思路不清晰这个会比较麻烦
         //思路：
-        //单个子View的left 和top是不断变化的，
+        //单个子View的left 和top是不断变化的，搞两个变量单独记录每一个子View的位置状态
+        //在双层for循环中先对每一行布局，换行后记得重置left，增加top
 
         var left = paddingStart
         var top = paddingTop
