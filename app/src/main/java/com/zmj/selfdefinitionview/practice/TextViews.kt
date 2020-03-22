@@ -38,6 +38,8 @@ class FirstText: View {
             paint.strokeWidth = 2f
             paint.color = Color.RED
 
+            paint.setShadowLayer(10f,12f,12f,Color.GREEN)
+
             //path.moveTo(20f,170f)
             //path.lineTo(350f,170f)
             //path.rLineTo(100f,-50f)
@@ -78,6 +80,8 @@ class TextOnPath:View{
         paint.style = Paint.Style.STROKE
         paint.strokeWidth = 2f
         paint.color = Color.RED
+
+        paint.setShadowLayer(10f,12f,12f,Color.GREEN)
 
         path.moveTo(20f,60f)
         //path.lineTo(400f,60f)
